@@ -1,0 +1,15 @@
+\section{Introduction}
+With the advent of deep neural networks(DNN), the field of AI and machine learning has seen unprecedented success in modelling unstructured data. While Recurrent neural networks have improved state-of-the-art performance in numerous tasks like machine translation, sentiment classification etc., Convolutional neural networks(CNN) have been extremely influential in image related tasks from image classification, generation etc. Lately CNNs have been used for image ranking ranking as well \cite{wang2014learning}. Image ranking using neural network enables us retrieve images that are similar to the query image from a collection of images. Qualitatively speaking, two images are said to be similar if they represent the scenes which are visually similar (a pair of images of cats are considered more similar than an image pair of a cat and a dog). However, for the purposes of training a neural network model one requires a quantitative similarity metric. Image labels serve as a good similarity metric as well (if one has access to a labelled data set).
+
+\vskip 5
+
+In this we present an interesting application of deep image ranking. We build an image query based item retrieval system that can be used for online/in-shop apparel shopping. For this, we train a model (modified Resnet-50), on the DeepFashion\cite{liu2016deepfashion} data set, to create feature embedding for images. When a user presents a query image (here, an image from the test set), we first obtain the feature embedding for that particular image and then compare it with the image embedding for every image in the database (here, train dataset) to retrieve images that are relevant to the query. We use various metrics like the "Precision at top-k" and the "Mean average precision" scores to quantitatively evaluate the model. As an addition to the image querying pipeline, we develop a simple and efficient histogram based approach to recolour the images thereby allowing the user to see how a particular clothing would look like if it were in a different colour. Finally, we demonstrate that the histogram method can be converted into a tool that can help in annotating the DeepFashion data for neural network based segmentation for clothes.
+
+\vskip 5
+To summarize the main highlights of our work are as follows :
+\begin{itemize}
+    \item Training a neural network to perform image ranking on DeepFashion dataset.
+    \item We also build a user interface which uses the outputs of the trained image ranking model to retrieve clothing similar to the ones in the query (demo video available at \textbf{POST DEMO URL}).
+    \item We use a simple histogram based approach to which helps in modifying the apparel color, thus providing a better visualization for the user.
+    \item We also demonstrate the ability of the histogram method to aid in creation of semantic segmentation data for the DeepFashion dataset.
+\end{itemize}

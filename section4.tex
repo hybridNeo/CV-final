@@ -1,0 +1,20 @@
+\section{Dominant Colors Estimation and Color Switching}
+
+Our image ranking model gives top k best images with respect to query image. Extending this to a use case, the user might want to try out different colors for the apparel obtained. Hence we extend our model by giving an option for the user to change the color of the apparel to the desired color. To demonstrate dominant colors of an image, a good strategy involves using k-means. If we choose the right value of k, then the centroid of the largest cluster will be a pretty good representation of the image's dominant color. \newline
+
+Steps involved in finding the dominant color in an image:
+\begin{enumerate}
+     \item The images obtained from Image Ranking model are cropped using the key points provided by DeepFashion dataset to find the most dominant color of the apparel.
+    \item The cropped images are resized to (100, 100) since we observe better results by down sampling the image with a decent decrease in the image quality.
+    \item We apply KMeans with the specified number of cluster centers (k = 4 in our implementation) and assign labels to the pixels.
+    \item We then count the labels to find the most popular label and subset out the most popular centroid.
+    \item We check for RGB values in the image that are above or below the dominant color value with respect to a threshold value set.
+    \item The values in the range (defined by the threshold) are changed to the desired color of the user.
+    
+\end{enumerate}
+
+
+\subsection{Semantic Segmentation }
+Semantic Segmentation is a computer vision technique for scene understanding where object shapes can be clearly outlined and identified. We can use the technique defined above for Color Switching to be a simple and efficient method for Semantic Segmentation. We are identifying the most dominant color in the image and there by getting the color range of the subject clothing. On getting the color range of clothing we can then apply a mask to separate the clothing from the rest of the image.
+
+
